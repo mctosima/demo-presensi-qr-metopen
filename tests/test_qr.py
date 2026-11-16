@@ -13,9 +13,9 @@ from presensi.aturan import qr_masih_berlaku
     (300, False),  # foto QR lama yang dibagikan lewat WhatsApp
 ])
 def test_batas_masa_berlaku(detik, diharapkan):
-    assert qr_masih_berlaku(1_000, 1_000 + detik) is diharapkan
+    assert qr_masih_berlaku(0, detik) is diharapkan
 
 
 def test_tolak_waktu_pindai_sebelum_qr_dibuat():  # uji negatif
     with pytest.raises(ValueError):
-        qr_masih_berlaku(1_000, 999)
+        qr_masih_berlaku(10, 9)
