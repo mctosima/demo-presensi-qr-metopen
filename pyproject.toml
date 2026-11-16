@@ -1,0 +1,10 @@
+[project]
+name = "presensi-qr-demo"
+version = "0.1.0"
+description = "Contoh proyek riset: verifikasi aturan presensi QR dinamis + geofence dengan pytest dan GitHub Actions"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-v"
