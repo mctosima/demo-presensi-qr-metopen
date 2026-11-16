@@ -19,9 +19,11 @@ Pesan inti: **uji otomatis adalah bukti verifikasi yang tercatat; agen AI boleh 
 
 ## B. Alur di kelas
 
-### Langkah 0 — Jalankan agen dulu (1 menit)
+### Langkah 0 — Jalankan agen saat latihan dimulai (1 menit, slide 33)
+Lakukan di **menit 1–2 latihan individu** (slide 33), ketika mahasiswa sudah mulai mengerjakan; jangan proyeksikan layar.
 Buka Issue #1 → **Assignees → Copilot** → (opsional prompt: *"Ikuti .github/copilot-instructions.md"*) → konfirmasi.
-> "Agen AI butuh beberapa menit. Sambil menunggu, kita lihat dulu bagaimana uji menjaga riset kita."
+Agen punya ±45 menit sampai slide 50, jadi draft PR biasanya sudah siap saat demo.
+Bila Copilot tidak muncul di Assignees, lewati langkah ini dan pakai Rencana B (bagian C).
 
 ### Langkah 1 — Dari latihan ke kode (3 menit)
 1. Buka `presensi/aturan.py`: tunjukkan `MASA_BERLAKU_QR = 30`, `RADIUS_GEOFENCE = 50.0`, dan operator `<=`.
