@@ -9,7 +9,7 @@ Pesan inti: **uji otomatis adalah bukti verifikasi yang tercatat; agen AI boleh 
 
 | # | Langkah | Cek |
 |---|---|---|
-| 1 | Repo publik `mctosima/presensi-qr-demo` sudah ada dan `main` ter-push | Tab **Actions**: run `uji` hijau |
+| 1 | Repo publik `mctosima/demo-presensi-qr-metopen` sudah ada dan `main` ter-push | Tab **Actions**: run `uji` hijau |
 | 2 | Ruleset proteksi `main`: *Require status checks to pass* → `uji` (README Langkah 5) | Tombol merge PR merah terkunci |
 | 3 | Buat **Issue #1** "Validasi format NIM sebelum presensi dicatat" (teks di README Langkah 6). **Jangan di-assign dulu.** | Issue terbuka |
 | 4 | Pastikan **Copilot** muncul di *Assignees* issue | Bila tidak ada → pakai Rencana B |

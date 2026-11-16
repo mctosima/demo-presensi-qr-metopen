@@ -1,7 +1,7 @@
 [project]
-name = "presensi-qr-demo"
+name = "demo-presensi-qr-metopen"
 version = "0.1.0"
-description = "Contoh proyek riset: verifikasi aturan presensi QR dinamis + geofence dengan pytest dan GitHub Actions"
+description = "Proyek contoh mata kuliah Metodologi Penelitian ITERA: verifikasi aturan presensi QR dinamis + geofence dengan pytest dan GitHub Actions"
 requires-python = ">=3.10"
 
 [tool.pytest.ini_options]

@@ -1,7 +1,18 @@
-# presensi-qr-demo
+# demo-presensi-qr-metopen
 
-Contoh proyek **riset** kecil untuk Pertemuan 10 Metodologi Penelitian (IF25-41029), Teknik Informatika ITERA:
-**verifikasi otomatis** dengan `pytest` dan **GitHub Actions**, plus cara meminta **agen AI** mengerjakan issue sambil tetap dijaga oleh uji.
+> **Proyek contoh untuk keperluan perkuliahan.** Repositori ini dibuat khusus untuk mata kuliah
+> **Metodologi Penelitian (IF25-41029)**, Program Studi Teknik Informatika, Institut Teknologi Sumatera (ITERA),
+> Semester Ganjil 2026/2027, **Pertemuan 10: Verifikasi, Validasi, Pengujian (VV&T) & Test Plan**.
+> Ini **bukan** sistem presensi resmi ITERA dan tidak dipakai untuk presensi sungguhan.
+> Kasus, aturan, koordinat, dan angka data pilot di dalamnya adalah **ilustrasi** untuk latihan di kelas.
+
+Tujuannya menunjukkan, dari **perspektif riset**, bagaimana:
+
+1. **Verifikasi** (apakah perlakuan riset diimplementasikan sesuai rancangan) ditulis sebagai uji `pytest`;
+2. uji itu dijalankan **otomatis** oleh **GitHub Actions** setiap push dan pull request;
+3. **agen AI** (GitHub Copilot cloud agent atau agen lokal) boleh membantu menulis kode, tetapi tetap dijaga oleh uji dan tinjauan peneliti.
+
+Materi pendamping: slide Pertemuan 10 di halaman kuliah [mctm.web.id/metopen](https://mctm.web.id/metopen).
 
 ## Konteks riset
 
@@ -28,8 +39,8 @@ Repositori ini **tidak** menjawab RQ. Repositori ini memastikan bahwa **perlakua
 ## Langkah 1 — Jalankan uji di laptop
 
 ```bash
-git clone https://github.com/mctosima/presensi-qr-demo.git
-cd presensi-qr-demo
+git clone https://github.com/mctosima/demo-presensi-qr-metopen.git
+cd demo-presensi-qr-metopen
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements-dev.txt
@@ -156,4 +167,4 @@ Lalu jalankan `pytest` sendiri, commit, push ke branch baru, buat PR, dan biarka
 2. Tambahkan fungsi evaluasi `selisih_proporsi(a, b)` beserta uji untuk data pilot (90% → 15%).
 3. Ubah `uji.yml` agar menguji di Python 3.10 dan 3.12 sekaligus (`strategy.matrix`).
 
-Lisensi: MIT. Koordinat di uji adalah titik ilustrasi.
+Lisensi: MIT. Dibuat oleh Tim Dosen Metodologi Penelitian, Teknik Informatika ITERA, untuk keperluan perkuliahan.
