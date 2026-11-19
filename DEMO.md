@@ -13,7 +13,7 @@ Pesan inti: **uji otomatis adalah bukti verifikasi yang tercatat; agen AI boleh 
 | 2 | Ruleset proteksi `main`: *Require status checks to pass* → `uji` (README Langkah 5) | Tombol merge PR merah terkunci |
 | 3 | Buat **Issue #1** "Validasi format NIM sebelum presensi dicatat" (teks di README Langkah 6). **Jangan di-assign dulu.** | Issue terbuka |
 | 4 | Pastikan **Copilot** muncul di *Assignees* issue | Bila tidak ada → pakai Rencana B |
-| 5 | **Gladi**: assign issue cadangan (#2, isi sama) ke Copilot, tunggu PR selesai, ambil tangkapan layar PR + diff + hasil Actions, lalu tutup PR & issue #2 | Tangkapan layar tersimpan |
+| 5 | **Gladi** Langkah 3: `/demo-refaktor-qr bug` → `perbaiki` → `reset`. Lalu assign issue cadangan (#2, isi sama) ke Copilot, tunggu PR selesai, ambil tangkapan layar PR + diff + hasil Actions, lalu tutup PR & issue #2 | Tangkapan layar tersimpan |
 | 6 | Laptop: clone repo, `.venv` siap, `pytest` → `20 passed`; `gh auth status` OK | Terminal & VS Code font besar |
 | 7 | Tab browser: repo, Actions, Issue #1, Settings → Rules | — |
 
@@ -38,7 +38,22 @@ Bila Copilot tidak muncul di Assignees, lewati langkah ini dan pakai Rencana B (
 2. Tab **Actions** → run terakhir → hijau.
    > "Setiap push diuji di mesin bersih, bukan hanya 'jalan di laptop saya'. Riwayatnya tersimpan dan bisa diaudit pembimbing."
 
-### Langkah 3 — CI menangkap bug (5 menit)
+### Langkah 3 — CI menangkap bug buatan agen AI (5 menit)
+Di terminal kedua, sesi Claude Code sudah terbuka di folder repo (perintah lokal dosen `/demo-refaktor-qr`, di luar repo ini).
+
+```text
+/demo-refaktor-qr bug        # agen "merapikan" qr_masih_berlaku, push, buka PR, pantau CI
+/demo-refaktor-qr perbaiki   # agen membaca log CI, memperbaiki kode (bukan uji), CI hijau
+/demo-refaktor-qr reset      # setelah kelas/gladi: tutup PR tanpa merge, hapus branch
+```
+1. Tunjukkan diff agen: `<=` menjadi `<`, dan klaim PR *"Tidak ada perubahan perilaku."*
+2. Tunjukkan run **merah** dan log: `FAILED tests/test_qr.py::test_batas_masa_berlaku[30-True]`, serta tombol merge yang **terkunci** oleh ruleset.
+3. **Tanya kelas:** *"Kalau bug ini lolos ke eksperimen, metrik mana yang berubah?"*
+   → Mahasiswa yang memindai tepat di detik ke-30 ditolak, sehingga **tingkat tolak sah naik**. Kesimpulan riset bisa salah karena implementasi, bukan karena perlakuannya. Itu **ancaman validitas internal**.
+4. `perbaiki`: agen memperbaiki **kode**, bukan uji (uji = spesifikasi), menjalankan `pytest` dulu, lalu push → run **hijau**. PR tidak di-merge.
+5. Jujur ke kelas: skenario disiapkan agar bug pasti muncul, tetapi salah satu angka di nilai batas (*off-by-one*) adalah kesalahan nyata yang umum, pada manusia maupun agen. Klaim agen bukan bukti; uji yang lulus adalah bukti.
+
+Cadangan manual (tanpa agen):
 ```bash
 git switch -c refactor/cek-qr
 # edit presensi/aturan.py: ubah  <=  menjadi  <  di qr_masih_berlaku
@@ -47,12 +62,6 @@ git push -u origin refactor/cek-qr
 gh pr create --fill
 gh pr checks --watch
 ```
-1. Tunjukkan run **merah** dan log: `FAILED tests/test_qr.py::test_batas_masa_berlaku[30-True]`.
-2. Tunjukkan tombol merge **terkunci** oleh ruleset.
-3. **Tanya kelas:** *"Kalau bug ini lolos ke eksperimen, metrik mana yang berubah?"*
-   → Mahasiswa yang memindai tepat di detik ke-30 ditolak, sehingga **tingkat tolak sah naik**. Kesimpulan riset bisa salah karena implementasi, bukan karena perlakuannya. Itu **ancaman validitas internal**.
-4. Perbaiki: kembalikan `<=`, `git commit -am "fix(qr): batas 30 detik inklusif"`, `git push` → run **hijau**.
-5. Tutup PR tanpa merge (tidak ada perubahan bersih) dan hapus branch.
 
 ### Langkah 4 — Meninjau kerja agen AI (6 menit)
 1. Buka PR dari Copilot (tertaut di timeline Issue #1). Bila belum selesai, pakai tangkapan layar gladi.
